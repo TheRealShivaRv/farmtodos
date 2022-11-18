@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { API_URL_Generator } from "./utils";
 
 function App() {
   const [testMessage, setTestMessage] = useState<string>("");
 
   useEffect(() => {
-    fetch("/api/test")
+    fetch("http://localhost:8000/api/test")
       .then((res) => res.json())
       .then((data) => setTestMessage(data.message))
       .catch((err) => console.error(err));
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header">   
         <img src={logo} className="App-logo" alt="logo" />
         <h2>{testMessage}</h2>
         <p>
